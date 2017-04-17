@@ -1,6 +1,6 @@
 {
   "name": "n-validators",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "JavaScript valiators",
   "main": "index.js",
   "files": [
