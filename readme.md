@@ -3,9 +3,6 @@ JavaScript valiators.
 
 [![Build Status](https://travis-ci.org/AlexanderMac/n-validators.svg?branch=master)](https://travis-ci.org/AlexanderMac/n-validators)
 
-### Features
-TODO
-
 ### Commands
 
 ```sh
@@ -25,49 +22,49 @@ console.log(r1, r2); // => true false
 
 ### API
 
-##### isValidDateString(value)
+- **isValidDateString(value)**<br>
 Returns `true` if `value` is a correct date string.
 
-##### isNotEmptyString(value)
+- **isNotEmptyString(value)**<br>
 Returns `true` if `value` is not empty string.
 
-##### isValidId(value)
+- **isValidId(value)**<br>
 Returns `true` if `value` is a correct id (positive number).
 
-##### isAllValidId(items)
+- **isAllValidId(items)**<br>
 Returns `true` if `items` is an array with all the elements with the correct id.
 
-##### isAllValidUniqueId(items)
+- **isAllValidUniqueId(items)**<br>
 Returns `true` if `items` is an array with all the elements with the correct, unique id.
 
-##### isValidObjectId(value)
+- **isValidObjectId(value)**<br>
 Returns `true` if `value` is a correct ObjectId.
 
-##### isAllValidObjectId(items)
+- **isAllValidObjectId(items)**<br>
 Returns `true` if `items` is an array with all the elements with the correct ObjectId.
 
-##### isAllValidUniqueObjectId(items)
+- **isAllValidUniqueObjectId(items)**<br>
 Returns `true` if `items` is an array with all the elements with the correct, unique ObjectId.
 
-##### isAllValidObjectIdOrNull(items)
+- **isAllValidObjectIdOrNull(items)**<br>
 Returns `true` if `items` is an array with all the elements with the correct ObjectId or null.
 
-##### isAllValidUniqueObjectIdOrNull(items)
+- **isAllValidUniqueObjectIdOrNull(items)**<br>
 Returns `true` if `items` is an array with all the elements with the correct, unique ObjectId or null.
 
-##### isValidEmail(value)
+- **isValidEmail(value)**<br>
 Returns `true` if `value` is a correct email.
 
-##### isValidPhoneSimple(value)
+- **isValidPhoneSimple(value)**<br>
 Returns `true` if `value` is a correct phone (a string with digits started from `+`).
 
-##### isAllAllowed(checked, allowed) 
+- **isAllAllowed(checked, allowed)**<br> 
 Returns `true` if `checked` is an array with all the elements from `allowed`.
 
-##### isAllUniqueAllowed(checked, allowed)
+- **isAllUniqueAllowed(checked, allowed)**<br>
 Returns `true` if `checked` is an array of unique elements with all the elements from `allowed`.
 
-##### isAllowedStringFields(checked, allowed)
+- **isAllowedStringFields(checked, allowed)**<br>
 Returns `true` if `checked` is a string of fields separated by space with all the fields from `allowed`.
 
 
