@@ -311,10 +311,10 @@ describe('validations', () => {
     registerTest('should return true when val is a string with a valid email', 'valid-email@mail.com', true);
   });
 
-  describe('isValidPhone', () => {
+  describe('isValidPhoneSimple', () => {
     let registerTest = (testName, value, expected) => {
       it(testName, () => {
-        let actual = validators.isValidPhone(value);
+        let actual = validators.isValidPhoneSimple(value);
         should(actual).equal(expected);
       });
     };
