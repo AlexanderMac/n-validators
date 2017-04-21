@@ -72,5 +72,6 @@ Returns `true` if `checked` is a string of fields separated by space with all th
 ### Author
 Alexander Mac
 
-### Licence
-Licensed under the MIT license.
+
+### License
+[MIT License](license)
