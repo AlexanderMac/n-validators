@@ -4,10 +4,16 @@
   "description": "JavaScript valiators",
   "main": "index.js",
   "files": [
+    "index.js",
     "lib"
   ],
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
-    "test": "gulp lint && gulp test"
+    "lint": "eslint --ext .js index.js lib/ test/",
+    "test": "NODE_ENV=test mocha",
+    "coverage": "nyc npm test"
   },
   "repository": {
     "type": "git",
@@ -27,16 +33,10 @@
     "moment": "^2.18.1"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-jshint": "^2.0.4",
-    "gulp-mocha": "^3.0.1",
-    "jshint": "^2.9.2",
-    "jshint-stylish": "^2.2.1",
+    "eslint": "^4.12.0",
     "mocha": "^3.2.0",
-    "require-dir": "^0.3.1",
+    "nyc": "^11.3.0",
     "should": "^11.2.1",
-    "sinon": "^2.1.0",
-    "yargs": "^7.1.0"
+    "sinon": "^2.1.0"
   }
 }
