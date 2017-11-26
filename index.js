@@ -1,5 +1,3 @@
 'use strict';
 
-let validators = require('./lib/validators');
-
-module.exports = validators;
+module.exports = require('./lib/validators');

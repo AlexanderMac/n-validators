@@ -1,20 +1,20 @@
 'use strict';
 
-let moment     = require('moment');
-let should     = require('should');
-let sinon      = require('sinon');
-let validators = require('../src/validators');
+const moment     = require('moment');
+const should     = require('should');
+const sinon      = require('sinon');
+const validators = require('../src/validators');
 
 const DEFAULT_ALLOWED = ['a', 'b', 'c'];
 
 describe('validations', () => {
-  describe('isValidDateString', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('isDateString', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isValidDateString(value);
+        let actual = validators.isDateString(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when val is undefined', undefined, false);
     registerTest('should return false when val is null', null, false);
@@ -32,12 +32,12 @@ describe('validations', () => {
   });
 
   describe('isNotEmptyString', () => {
-    let registerTest = (testName, value, expected) => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
         let actual = validators.isNotEmptyString(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when val is undefined', undefined, false);
     registerTest('should return false when val is null', null, false);
@@ -53,13 +53,13 @@ describe('validations', () => {
     registerTest('should return true when val isn\'t an empty string', 'not empty string', true);
   });
 
-  describe('isValidId', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('isId', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isValidId(value);
+        let actual = validators.isId(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when val is undefined', undefined, false);
     registerTest('should return false when val is null', null, false);
@@ -75,13 +75,13 @@ describe('validations', () => {
     registerTest('should return true when val is a positive number', 123, true);
   });
 
-  describe('isAllValidId', () => {
-    let registerTest = (testName, items, expected) => {
+  describe('everyIsId', () => {
+    function registerTest(testName, items, expected) {
       it(testName, () => {
-        let actual = validators.isAllValidId(items);
+        let actual = validators.everyIsId(items);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when items is undefined', undefined, false);
     registerTest('should return false when items is null', null, false);
@@ -99,24 +99,24 @@ describe('validations', () => {
     registerTest('should return true when items is an array with all valid ids', [1, 2, 3], true);
   });
 
-  describe('isAllValidUniqueId', () => {
+  describe('everyIsUniqueId', () => {
     beforeEach(() => {
-      sinon.stub(validators, 'isAllValidId');
+      sinon.stub(validators, 'everyIsId');
     });
 
     afterEach(() => {
-      validators.isAllValidId.restore();
+      validators.everyIsId.restore();
     });
 
-    it('should call isAllValidId and pass parameters', () => {
+    it('should call everyIsId and pass parameters', () => {
       let value = [1, 2, 3];
 
       validators
-        .isAllValidId
+        .everyIsId
         .withArgs(value)
         .returns(true);
 
-      let actual = validators.isAllValidUniqueId(value);
+      let actual = validators.everyIsUniqueId(value);
       should(actual).equal(true);
     });
 
@@ -124,22 +124,22 @@ describe('validations', () => {
       let value = [1, 2, 2];
 
       validators
-        .isAllValidId
+        .everyIsId
         .withArgs(value)
         .returns(true);
 
-      let actual = validators.isAllValidUniqueId(value);
+      let actual = validators.everyIsUniqueId(value);
       should(actual).equal(false);
     });
   });
 
-  describe('isValidObjectId', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('isObjectId', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isValidObjectId(value);
+        let actual = validators.isObjectId(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when items is undefined', undefined, false);
     registerTest('should return false when items is null', null, false);
@@ -156,13 +156,13 @@ describe('validations', () => {
     registerTest('should return true when items is a string with a valid ObjectId', '0123456789abcdefABCDEF00', true);
   });
 
-  describe('isAllValidObjectId', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('everyIsObjectId', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isAllValidObjectId(value);
+        let actual = validators.everyIsObjectId(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when items is undefined', undefined, false);
     registerTest('should return false when items is null', null, false);
@@ -186,24 +186,24 @@ describe('validations', () => {
     );
   });
 
-  describe('isAllValidUniqueObjectId', () => {
+  describe('everyIsUniqueObjectId', () => {
     beforeEach(() => {
-      sinon.stub(validators, 'isAllValidObjectId');
+      sinon.stub(validators, 'everyIsObjectId');
     });
 
     afterEach(() => {
-      validators.isAllValidObjectId.restore();
+      validators.everyIsObjectId.restore();
     });
 
-    it('should call isAllValidObjectId and pass parameters', () => {
+    it('should call everyIsObjectId and pass parameters', () => {
       let value = ['0123456789abcdefABCDEF00', '0123456789abcdefABCDEF11', '0123456789abcdefABCDEF22'];
 
       validators
-        .isAllValidObjectId
+        .everyIsObjectId
         .withArgs(value)
         .returns(true);
 
-      let actual = validators.isAllValidUniqueObjectId(value);
+      let actual = validators.everyIsUniqueObjectId(value);
       should(actual).equal(true);
     });
 
@@ -211,22 +211,22 @@ describe('validations', () => {
       let value = ['0123456789abcdefABCDEF00', '0123456789abcdefABCDEF22', '0123456789abcdefABCDEF22'];
 
       validators
-        .isAllValidObjectId
+        .everyIsObjectId
         .withArgs(value)
         .returns(true);
 
-      let actual = validators.isAllValidUniqueObjectId(value);
+      let actual = validators.everyIsUniqueObjectId(value);
       should(actual).equal(false);
     });
   });
 
-  describe('isAllValidObjectIdOrNull', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('everyIsObjectIdOrNull', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isAllValidObjectIdOrNull(value);
+        let actual = validators.everyIsObjectIdOrNull(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when items is undefined', undefined, false);
     registerTest('should return false when items is null', null, false);
@@ -254,24 +254,24 @@ describe('validations', () => {
     );
   });
 
-  describe('isAllValidUniqueObjectIdOrNull', () => {
+  describe('everyIsUniqueObjectIdOrNull', () => {
     beforeEach(() => {
-      sinon.stub(validators, 'isAllValidObjectIdOrNull');
+      sinon.stub(validators, 'everyIsObjectIdOrNull');
     });
 
     afterEach(() => {
-      validators.isAllValidObjectIdOrNull.restore();
+      validators.everyIsObjectIdOrNull.restore();
     });
 
-    it('should call isAllValidObjectIdOrNull and pass parameters', () => {
+    it('should call everyIsObjectIdOrNull and pass parameters', () => {
       let value = ['0123456789abcdefABCDEF00', '0123456789abcdefABCDEF11', null];
 
       validators
-        .isAllValidObjectIdOrNull
+        .everyIsObjectIdOrNull
         .withArgs(value)
         .returns(true);
 
-      let actual = validators.isAllValidUniqueObjectIdOrNull(value);
+      let actual = validators.everyIsUniqueObjectIdOrNull(value);
       should(actual).equal(true);
     });
 
@@ -279,22 +279,22 @@ describe('validations', () => {
       let value = ['0123456789abcdefABCDEF00', '0123456789abcdefABCDEF22', '0123456789abcdefABCDEF22', null, null];
 
       validators
-        .isAllValidObjectIdOrNull
+        .everyIsObjectIdOrNull
         .withArgs(value)
         .returns(true);
 
-      let actual = validators.isAllValidUniqueObjectIdOrNull(value);
+      let actual = validators.everyIsUniqueObjectIdOrNull(value);
       should(actual).equal(false);
     });
   });
 
-  describe('isValidEmail', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('isEmail', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isValidEmail(value);
+        let actual = validators.isEmail(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when val is undefined', undefined, false);
     registerTest('should return false when val is null', null, false);
@@ -311,13 +311,13 @@ describe('validations', () => {
     registerTest('should return true when val is a string with a valid email', 'valid-email@mail.com', true);
   });
 
-  describe('isValidPhoneSimple', () => {
-    let registerTest = (testName, value, expected) => {
+  describe('isSimplePhoneNumber', () => {
+    function registerTest(testName, value, expected) {
       it(testName, () => {
-        let actual = validators.isValidPhoneSimple(value);
+        let actual = validators.isSimplePhoneNumber(value);
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when val is undefined', undefined, false);
     registerTest('should return false when val is null', null, false);
@@ -335,48 +335,48 @@ describe('validations', () => {
     registerTest('should return true when val is a string with a valid phone', '+12345678', true);
   });
 
-  describe('isAllAllowed', () => {
-    let registerTest = (testName, checked, expected) => {
+  describe('everyIsAllowed', () => {
+    function registerTest(testName, items, expected) {
       it(testName, () => {
-        let actual = validators.isAllAllowed(checked, DEFAULT_ALLOWED);
+        let actual = validators.everyIsAllowed(items, DEFAULT_ALLOWED);
         should(actual).equal(expected);
       });
-    };
+    }
 
-    registerTest('should return false when checked is undefined', undefined, false);
-    registerTest('should return false when checked is null', null, false);
-    registerTest('should return false when checked is a boolean and equals false', false, false);
-    registerTest('should return false when checked is a boolean and equals true', true, false);
-    registerTest('should return false when checked is a negative number', -1, false);
-    registerTest('should return false when checked is a number and equals to zero', 0, false);
-    registerTest('should return false when checked is a positive number', 123, false);
-    registerTest('should return false when checked is Date object', new Date(), false);
-    registerTest('should return false when checked is an object', {}, false);
-    registerTest('should return false when checked is an empty string', '', false);
-    registerTest('should return false when checked isn\'t an empty string', 'not empty string', false);
-    registerTest('should return false when checked is an array with some node allowed items', ['a', 'b', 'd'], false);
-    registerTest('should return true when checked is an empty array', [], true);
-    registerTest('should return true when checked is an array with all allowed items', ['a', 'b'], true);
+    registerTest('should return false when items is undefined', undefined, false);
+    registerTest('should return false when items is null', null, false);
+    registerTest('should return false when items is a boolean and equals false', false, false);
+    registerTest('should return false when items is a boolean and equals true', true, false);
+    registerTest('should return false when items is a negative number', -1, false);
+    registerTest('should return false when items is a number and equals to zero', 0, false);
+    registerTest('should return false when items is a positive number', 123, false);
+    registerTest('should return false when items is Date object', new Date(), false);
+    registerTest('should return false when items is an object', {}, false);
+    registerTest('should return false when items is an empty string', '', false);
+    registerTest('should return false when items isn\'t an empty string', 'not empty string', false);
+    registerTest('should return false when items is an array with some node allowed items', ['a', 'b', 'd'], false);
+    registerTest('should return true when items is an empty array', [], true);
+    registerTest('should return true when items is an array with all allowed items', ['a', 'b'], true);
   });
 
-  describe('isAllUniqueAllowed', () => {
+  describe('everyIsUniqueAllowed', () => {
     beforeEach(() => {
-      sinon.stub(validators, 'isAllAllowed');
+      sinon.stub(validators, 'everyIsAllowed');
     });
 
     afterEach(() => {
-      validators.isAllAllowed.restore();
+      validators.everyIsAllowed.restore();
     });
 
-    it('should call isAllAllowed and pass parameters', () => {
+    it('should call everyIsAllowed and pass parameters', () => {
       let value = ['a', 'b', 'c'];
 
       validators
-        .isAllAllowed
+        .everyIsAllowed
         .withArgs(value, DEFAULT_ALLOWED)
         .returns(true);
 
-      let actual = validators.isAllUniqueAllowed(value, DEFAULT_ALLOWED);
+      let actual = validators.everyIsUniqueAllowed(value, DEFAULT_ALLOWED);
       should(actual).equal(true);
     });
 
@@ -384,22 +384,22 @@ describe('validations', () => {
       let value = ['a', 'b', 'b'];
 
       validators
-        .isAllAllowed
+        .everyIsAllowed
         .withArgs(value, DEFAULT_ALLOWED)
         .returns(true);
 
-      let actual = validators.isAllUniqueAllowed(value, DEFAULT_ALLOWED);
+      let actual = validators.everyIsUniqueAllowed(value, DEFAULT_ALLOWED);
       should(actual).equal(false);
     });
   });
 
-  describe('isAllowedStringFields', () => {
-    let registerTest = (testName, checked, expected) => {
+  describe('isFieldsString', () => {
+    function registerTest(testName, checked, expected) {
       it(testName, () => {
-        let actual = validators.isAllowedStringFields(checked, DEFAULT_ALLOWED.join(' '));
+        let actual = validators.isFieldsString(checked, DEFAULT_ALLOWED.join(' '));
         should(actual).equal(expected);
       });
-    };
+    }
 
     registerTest('should return false when checked is undefined', undefined, false);
     registerTest('should return false when checked is null', null, false);

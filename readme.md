@@ -15,56 +15,56 @@ $ npm i -S n-validators
 ```js
 const validators = require('validators');
 
-let r1 = validators.isValidId(11); // r1 - true
-let r2 = validators.isValidId('invalid id'); // r2 - false
+let r1 = validators.isId(11); // r1 - true
+let r2 = validators.isId('invalid id'); // r2 - false
 ```
 
 ### API
 
-- **isValidDateString(value)**<br>
-Returns `true` if `value` is a correct date string.
+- **isDateString(val)**<br>
+Returns `true` if `val` is a valid date string.
 
-- **isNotEmptyString(value)**<br>
-Returns `true` if `value` is not empty string.
+- **isNotEmptyString(val)**<br>
+Returns `true` if `val` is not an empty string.
 
-- **isValidId(value)**<br>
-Returns `true` if `value` is a correct id (positive number).
+- **isId(val)**<br>
+Returns `true` if `val` is a valid id (a positive integer number).
 
-- **isAllValidId(items)**<br>
-Returns `true` if `items` is an array with all the elements with the correct id.
+- **everyIsId(items)**<br>
+Returns `true` if `items` is an array with valid id elements.
 
-- **isAllValidUniqueId(items)**<br>
-Returns `true` if `items` is an array with all the elements with the correct, unique id.
+- **everyIsUniqueId(items)**<br>
+Returns `true` if `items` is an array with valid, unique id elements.
 
-- **isValidObjectId(value)**<br>
-Returns `true` if `value` is a correct ObjectId.
+- **isObjectId(val)**<br>
+Returns `true` if `val` is a valid ObjectId.
 
-- **isAllValidObjectId(items)**<br>
-Returns `true` if `items` is an array with all the elements with the correct ObjectId.
+- **everyIsObjectId(items)**<br>
+Returns `true` if `items` is an array with valid ObjectId elements.
 
-- **isAllValidUniqueObjectId(items)**<br>
-Returns `true` if `items` is an array with all the elements with the correct, unique ObjectId.
+- **everyIsUniqueObjectId(items)**<br>
+Returns `true` if `items` is an array with valid, unique ObjectId elements.
 
-- **isAllValidObjectIdOrNull(items)**<br>
-Returns `true` if `items` is an array with all the elements with the correct ObjectId or null.
+- **everyIsObjectIdOrNull(items)**<br>
+Returns `true` if `items` is an array with valid ObjectId or null elements.
 
-- **isAllValidUniqueObjectIdOrNull(items)**<br>
-Returns `true` if `items` is an array with all the elements with the correct, unique ObjectId or null.
+- **everyIsUniqueObjectIdOrNull(items)**<br>
+Returns `true` if `items` is an array with valid, unique ObjectId or null elements.
 
-- **isValidEmail(value)**<br>
-Returns `true` if `value` is a correct email.
+- **isEmail(val)**<br>
+Returns `true` if `val` is a valid email.
 
-- **isValidPhoneSimple(value)**<br>
-Returns `true` if `value` is a correct phone (a string with digits started from `+`).
+- **isSimplePhoneNumber(val)**<br>
+Returns `true` if `val` is a valid phone number (a string with digits started from `+`).
 
-- **isAllAllowed(checked, allowed)**<br> 
-Returns `true` if `checked` is an array with all the elements from `allowed`.
+- **everyIsAllowed(items, allowed)**<br> 
+Returns `true` if `items` is an array with elements from `allowed`.
 
-- **isAllUniqueAllowed(checked, allowed)**<br>
-Returns `true` if `checked` is an array of unique elements with all the elements from `allowed`.
+- **everyIsUniqueAllowed(items, allowed)**<br>
+Returns `true` if `items` is an array of unique elements from `allowed`.
 
-- **isAllowedStringFields(checked, allowed)**<br>
-Returns `true` if `checked` is a string of fields separated by space with all the fields from `allowed`.
+- **isFieldsString(val, allowed)**<br>
+Returns `true` if `val` is a string of fields separated by space from `allowed`.
 
 ### Author
 Alexander Mac
