@@ -55,7 +55,7 @@ module.exports = {
       return false;
     }
     if (!checked) {
-        return true;
+      return true;
     }
     let checkedFields = checked.split(' ');
     let allowedFields = allowed.split(' ');

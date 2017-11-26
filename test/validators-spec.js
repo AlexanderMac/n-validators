@@ -3,7 +3,7 @@
 let moment     = require('moment');
 let should     = require('should');
 let sinon      = require('sinon');
-let validators = require('../lib/validators');
+let validators = require('../src/validators');
 
 const DEFAULT_ALLOWED = ['a', 'b', 'c'];
 
@@ -115,7 +115,7 @@ describe('validations', () => {
         .isAllValidId
         .withArgs(value)
         .returns(true);
-      
+
       let actual = validators.isAllValidUniqueId(value);
       should(actual).equal(true);
     });
@@ -127,7 +127,7 @@ describe('validations', () => {
         .isAllValidId
         .withArgs(value)
         .returns(true);
-      
+
       let actual = validators.isAllValidUniqueId(value);
       should(actual).equal(false);
     });
@@ -202,7 +202,7 @@ describe('validations', () => {
         .isAllValidObjectId
         .withArgs(value)
         .returns(true);
-      
+
       let actual = validators.isAllValidUniqueObjectId(value);
       should(actual).equal(true);
     });
@@ -214,7 +214,7 @@ describe('validations', () => {
         .isAllValidObjectId
         .withArgs(value)
         .returns(true);
-      
+
       let actual = validators.isAllValidUniqueObjectId(value);
       should(actual).equal(false);
     });
@@ -270,7 +270,7 @@ describe('validations', () => {
         .isAllValidObjectIdOrNull
         .withArgs(value)
         .returns(true);
-      
+
       let actual = validators.isAllValidUniqueObjectIdOrNull(value);
       should(actual).equal(true);
     });
@@ -282,7 +282,7 @@ describe('validations', () => {
         .isAllValidObjectIdOrNull
         .withArgs(value)
         .returns(true);
-      
+
       let actual = validators.isAllValidUniqueObjectIdOrNull(value);
       should(actual).equal(false);
     });
@@ -375,7 +375,7 @@ describe('validations', () => {
         .isAllAllowed
         .withArgs(value, DEFAULT_ALLOWED)
         .returns(true);
-      
+
       let actual = validators.isAllUniqueAllowed(value, DEFAULT_ALLOWED);
       should(actual).equal(true);
     });
@@ -387,7 +387,7 @@ describe('validations', () => {
         .isAllAllowed
         .withArgs(value, DEFAULT_ALLOWED)
         .returns(true);
-      
+
       let actual = validators.isAllUniqueAllowed(value, DEFAULT_ALLOWED);
       should(actual).equal(false);
     });
