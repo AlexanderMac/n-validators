@@ -9,26 +9,28 @@ const DEFAULT_ALLOWED = ['a', 'b', 'c'];
 
 describe('validations', () => {
   describe('isDateString', () => {
-    function registerTest(testName, value, expected) {
+    function registerTest(testName, value, format, expected) {
       it(testName, () => {
-        let actual = validators.isDateString(value);
+        let actual = validators.isDateString(value, format);
         should(actual).equal(expected);
       });
     }
 
-    registerTest('should return false when val is undefined', undefined, false);
-    registerTest('should return false when val is null', null, false);
-    registerTest('should return false when val is a boolean and equals false', false, false);
-    registerTest('should return false when val is a boolean and equals true', true, false);
-    registerTest('should return false when val is a negative number', -1, false);
-    registerTest('should return false when val is a number and equals to zero', 0, false);
-    registerTest('should return false when val is a positive number', 123, false);
-    registerTest('should return false when val is an object', {}, false);
-    registerTest('should return false when val is an array', [1, 2, 3], false);
-    registerTest('should return false when val is Date object', new Date(), false);
-    registerTest('should return false when val is Moment object', moment(), false);
-    registerTest('should return false when val is a wrong date string', 'string', false);
-    registerTest('should return true when val is a valid date string', '2016-01-01T00:00:00Z', true);
+    registerTest('should return false when val is undefined', undefined, null, false);
+    registerTest('should return false when val is null', null, null, false);
+    registerTest('should return false when val is a boolean and equals false', false, null, false);
+    registerTest('should return false when val is a boolean and equals true', true, null, false);
+    registerTest('should return false when val is a negative number', -1, null, false);
+    registerTest('should return false when val is a number and equals to zero', 0, null, false);
+    registerTest('should return false when val is a positive number', 123, null, false);
+    registerTest('should return false when val is an object', {}, null, false);
+    registerTest('should return false when val is an array', [1, 2, 3], null, false);
+    registerTest('should return false when val is Date object', new Date(), null, false);
+    registerTest('should return false when val is Moment object', moment(), null, false);
+    registerTest('should return false when val is a wrong date string', 'string', null, false);
+    registerTest('should return false when val is a wrong date string in provided format', '2017-35-21', 'YYYY-MM-DD', false);
+    registerTest('should return true when val is a valid date string', '2016-01-01T00:00:00Z', null, true);
+    registerTest('should return true when val is a valid date string in provided format', '2016-01-01', 'YYYY-MM-DD', true);
   });
 
   describe('isNotEmptyString', () => {

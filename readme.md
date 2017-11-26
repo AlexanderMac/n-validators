@@ -21,8 +21,8 @@ let r2 = validators.isId('invalid id'); // r2 - false
 
 ### API
 
-- **isDateString(val)**<br>
-Returns `true` if `val` is a valid date string.
+- **isDateString(val, format)**<br>
+Returns `true` if `val` is a valid date string in `format` or in default format `YYYY-MM-DDThh:mm:ss`.
 
 - **isNotEmptyString(val)**<br>
 Returns `true` if `val` is not an empty string.

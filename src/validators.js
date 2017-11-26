@@ -4,8 +4,8 @@ const _      = require('lodash');
 const moment = require('moment');
 
 class Validators {
-  isDateString(val) {
-    return _.isString(val) && moment(val, moment.defaultFormat).isValid();
+  isDateString(val, format) {
+    return _.isString(val) && moment(val, format || moment.defaultFormat).isValid();
   }
 
   isNotEmptyString(val) {
