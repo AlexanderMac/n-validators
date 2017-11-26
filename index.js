@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/validators');
+module.exports = require('./src/validators');
