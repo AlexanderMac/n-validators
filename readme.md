@@ -13,12 +13,10 @@ $ npm i -S n-validators
 
 ### Usage
 ```js
-let validators = require('validators');
+const validators = require('validators');
 
-let r1 = validators.isValidId(11);
-let r2 = validators.isValidId('invalid id');
-
-console.log(r1, r2); // => true false
+let r1 = validators.isValidId(11); // r1 - true
+let r2 = validators.isValidId('invalid id'); // r2 - false
 ```
 
 ### API
@@ -68,10 +66,8 @@ Returns `true` if `checked` is an array of unique elements with all the elements
 - **isAllowedStringFields(checked, allowed)**<br>
 Returns `true` if `checked` is a string of fields separated by space with all the fields from `allowed`.
 
-
 ### Author
 Alexander Mac
-
 
 ### License
 [MIT License](license)
