@@ -2,6 +2,7 @@
 JavaScript valiators.
 
 [![Build Status](https://travis-ci.org/AlexanderMac/n-validators.svg?branch=master)](https://travis-ci.org/AlexanderMac/n-validators)
+[![Code Coverage](https://codecov.io/gh/AlexanderMac/n-validators/branch/master/graph/badge.svg)](https://codecov.io/gh/AlexanderMac/n-validators)
 [![npm version](https://badge.fury.io/js/n-validators.svg)](https://badge.fury.io/js/n-validators)
 
 ### Commands
