@@ -1,5 +1,5 @@
-# <sub>v2.0.0-alpha</sub>
-#### _Nov. 26, 2017_
+# <sub>v2.0.0</sub>
+#### _Dec. 17, 2018_
 
  * Renamed `isValidDateString` to `isDateString`.
  * Renamed `isValidId` to `isId`.
