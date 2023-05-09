@@ -1,4 +1,6 @@
 # n-validators
+## WARNING :warning:: This repo is not maintained anymore, use such libraries as [zod](https://zod.dev/) instead.
+
 JavaScript valiators.
 
 [![Build Status](https://travis-ci.org/AlexanderMac/n-validators.svg?branch=master)](https://travis-ci.org/AlexanderMac/n-validators)
